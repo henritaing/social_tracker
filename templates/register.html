@@ -11,6 +11,11 @@
 <body>
     <div class="container">
         <h2>Register</h2>
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
         <form action="/process_register" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>

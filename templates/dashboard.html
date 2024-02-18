@@ -1,20 +1,66 @@
-<!-- login.html -->
+<!-- dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dashboard</title>
+    <!-- Inclure Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Inclure Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; } /* Définir la hauteur de la carte */
+    </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="/process_login" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+    <div class="container">
+        <h2 class="mt-5 mb-3">Dashboard</h2>
+        <!-- Div pour afficher la carte -->
+        <div id="map"></div>
     </div>
+
+    <!-- Inclure Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialiser la carte avec une vue par défaut
+        var map = L.map('map').setView([51.5761, 0.4883], 11);
+
+        // Ajouter une couche de tuiles OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Ajouter des marqueurs pour représenter les quartiers
+        var districts = [
+                        { name: "Pitsea", coordinates: [51.5734, 0.4858], responses_count: 0 },
+                        { name: "Laindon", coordinates: [51.5724, 0.4254], responses_count: 0 },
+                        { name: "Vange", coordinates: [51.5695, 0.4486], responses_count: 0 },
+                        { name: "Fryerns", coordinates: [51.5711, 0.4436], responses_count: 0 },
+                        { name: "Craylands", coordinates: [51.5691, 0.4657], responses_count: 0 },
+                        { name: "Barstable", coordinates: [51.5871, 0.4338], responses_count: 0 },
+                        { name: "Kingswood", coordinates: [51.5682, 0.4286], responses_count: 0 },
+                        { name: "Ghyllgrove", coordinates: [51.5672, 0.4638], responses_count: 0 },
+                        { name: "Lee Chapel South", coordinates: [51.5719, 0.4581], responses_count: 0 },
+                        { name: "Lee Chapel North", coordinates: [51.5764, 0.4543], responses_count: 0 },
+                        { name: "Langdon Hills", coordinates: [51.5655, 0.4419], responses_count: 0 },
+                        { name: "Dry Street", coordinates: [51.5713, 0.4617], responses_count: 0 },
+                        { name: "Great Berry", coordinates: [51.5716, 0.4293], responses_count: 0 },
+                        { name: "Noak Bridge", coordinates: [51.5657, 0.4517], responses_count: 0 },
+                        { name: "Steeple View", coordinates: [51.5739, 0.4705], responses_count: 0 },
+                        { name: "Pipps Hill", coordinates: [51.5791, 0.4745], responses_count: 0 },
+                        { name: "Cranes", coordinates: [51.5807, 0.4599], responses_count: 0 }
+                    ];
+
+                    districts.forEach(function(district) {
+                        var markerSize = Math.sqrt(district.responses_count) * 1000000; // Ajustez le facteur multiplicatif selon votre préférence
+                        L.circleMarker(district.coordinates, {
+                            radius: markerSize,
+                            fillColor: "blue",
+                            fillOpacity: 0.5
+                        }).addTo(map)
+                        .bindPopup(district.name + "<br>Responses: " + district.responses_count);
+                    });
+    </script>
 </body>
 </html>
