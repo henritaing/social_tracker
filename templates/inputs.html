@@ -1,0 +1,43 @@
+<!-- inputs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs</title>
+    <!-- Inclure Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Submit Inputs</h2>
+                        <form action="/process_inputs" method="POST">
+                            <div class="form-group">
+                                <label for="feel">How do you feel? (1-5)</label>
+                                <input type="number" class="form-control" id="feel" name="feel" min="1" max="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="day">Day of the week (1-5)</label>
+                                <input type="number" class="form-control" id="day" name="day" min="1" max="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="health">Health status</label>
+                                <select class="form-control" id="health" name="health" required>
+                                    <option value="Sick">Sick</option>
+                                    <option value="OK">OK</option>
+                                    <option value="Rocking">Rocking</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
