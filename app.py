@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from enum import Enum
-from flask_migrate import Migrate
-
-
+from flask_migrate import Migrate # python -m flask db init
+                                  # python -m flask db migrate
 
 
 app = Flask(__name__)
-app.secret_key = 'votre_clé_secrète_ici'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
