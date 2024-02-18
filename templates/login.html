@@ -1,4 +1,3 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +6,19 @@
     <title>Login</title>
     <!-- Inclure Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/style_login.css">
 </head>
 <body>
     <div class="container">
+         <img src="/static/logo.png" alt="Votre logo" class="logo">
+         <div class="header-text">
+             <h4>How are you, Basildon?</h4>
+         </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Login</h2>
+                        <h2 class="card-title text-center">Who might you be?</h2>
                         {% if error %}
                         <div class="alert alert-danger" role="alert">
                             {{ error }}
@@ -29,7 +33,6 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </form>
-                        <!-- Ajoutez un lien vers la nouvelle page ici -->
                         <p class="text-center mt-3">Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
                     </div>
                 </div>

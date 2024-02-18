@@ -43,7 +43,7 @@ class User(db.Model):
     feel = db.Column(db.Integer, default=None)
     day = db.Column(db.Integer, default=None)
     health = db.Column(db.Enum(HealthStatus), default=None)
-    district = db.Column(db.Enum(District), default=None)  # Modification ici
+    district = db.Column(db.Enum(District), default=None)  
 
     # Ajouter des contraintes pour feel et day
     __table_args__ = (
@@ -70,7 +70,7 @@ def process_login():
         password = request.form['password']
         user = User.query.filter_by(username=username, password=password).first()
         if user:
-            session['username'] = username  # Définir le nom d'utilisateur dans la session
+            session['username'] = username  
             return redirect(url_for('inputs'))
     except IntegrityError:
         pass
@@ -91,7 +91,7 @@ def process_register():
     db.session.add(new_user)
     try:
         db.session.commit()
-        session['username'] = username  # Définir le nom d'utilisateur dans la session
+        session['username'] = username  
         return redirect(url_for('login'))
     except IntegrityError:
         db.session.rollback()
@@ -110,15 +110,13 @@ def process_inputs():
     health = request.form['health']
     district = request.form['district']
 
-    # Validation du district
     try:
-        district_enum = District[district.upper()]  # Convertit le district en Enum
+        district_enum = District[district.upper()]  
     except KeyError:
         return render_template('inputs.html', error='Invalid district selected.')
 
-    # Validation de la santé
     try:
-        health_enum = HealthStatus[health.upper()]  # Convertit la santé en Enum
+        health_enum = HealthStatus[health.upper()]  
     except KeyError:
         return render_template('inputs.html', error='Invalid health status selected.')
 
@@ -126,13 +124,12 @@ def process_inputs():
     if user:
         user.feel = feel
         user.day = day
-        user.health = health_enum  # Utiliser la valeur d'énumération convertie
-        user.district = district_enum  # Utiliser la valeur d'énumération convertie
+        user.health = health_enum 
+        user.district = district_enum  
         db.session.commit()
-        return redirect(url_for('dashboard'))  # Redirection vers le dashboard après la soumission des données
+        return redirect(url_for('dashboard'))  
 
-    return render_template('inputs.html', error='User not found')  # Ajouter une gestion si l'utilisateur n'est pas trouvé
-
+    return render_template('inputs.html', error='User not found')  
 
 
 def get_responses_count_per_district():
