@@ -1,15 +1,12 @@
 body {
     background-color: #b4dbff; 
 }
-.col-md-6 {
-    background-color: #fce3fe; 
+.container {
+    background-color: #ffffff; 
     border-radius: 15px; 
     padding: 20px; 
     margin-top: 50px; 
-}
-
-.card_body {
-    background-color: #fce3fe; 
+    width: 40%;
 }
 
 .logo {
