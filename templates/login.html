@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <!-- Inclure Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/style_login.css">
 </head>
@@ -12,13 +11,13 @@
     <div class="container">
          <img src="/static/logo.png" alt="Votre logo" class="logo">
          <div class="header-text">
-             <h4>How are you, Basildon?</h4>
+             <h5>How are you, Basildon?</h5>
          </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Who might you be?</h2>
+                        <h5 class="card-title text-center">Who might you be?</h5>
                         {% if error %}
                         <div class="alert alert-danger" role="alert">
                             {{ error }}

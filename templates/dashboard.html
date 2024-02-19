@@ -4,33 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Inclure Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Inclure Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../static/style_dashboard.css">
     <style>
-        #map { height: 600px; } /* Définir la hauteur de la carte */
+        #map { height: 600px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="mt-5 mb-3">Dashboard</h2>
-        <!-- Div pour afficher la carte -->
         <div id="map"></div>
     </div>
 
-    <!-- Inclure Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // Initialiser la carte avec une vue par défaut
         var map = L.map('map').setView([51.5761, 0.4883], 11);
 
-        // Ajouter une couche de tuiles OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
         }).addTo(map);
 
-        // Ajouter des marqueurs pour représenter les quartiers
         var districts = [
                         { name: "Pitsea", coordinates: [51.5734, 0.4858], responses_count: 0 },
                         { name: "Laindon", coordinates: [51.5724, 0.4254], responses_count: 0 },

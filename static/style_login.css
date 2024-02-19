@@ -9,6 +9,10 @@ body {
     width: 40%;
 }
 
+.card-body {
+    width: 100%;
+}
+
 .logo {
     position: absolute;
     top: 10px;
