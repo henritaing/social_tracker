@@ -8,7 +8,7 @@ from flask_migrate import Migrate # python -m flask db init
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  
-app.secret_key = 'your_secret_key'
+app.secret_key = 'keykeykeykey'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -45,7 +45,6 @@ class User(db.Model):
     health = db.Column(db.Enum(HealthStatus), default=None)
     district = db.Column(db.Enum(District), default=None)  
 
-    # Ajouter des contraintes pour feel et day
     __table_args__ = (
         db.CheckConstraint('feel >= 1 AND feel <= 5', name='check_feel_range'),
         db.CheckConstraint('day >= 1 AND day <= 5', name='check_day_range'),
